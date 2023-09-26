@@ -69,30 +69,45 @@
 
     <div class="container" style="position: relative; width: 640px; height: 480px;">
         <!-- Camera Feed (Regular Video Element) -->
-        <video id="localVideo" poster="https://i.imgur.com/YC9U2uc.jpg" ></video>
+<!--        <video id="localVideo" width="320" height="240" playsinline autoplay muted></video>-->
+        <div id="video-container">
+            <video class="video_player" id="player" width="100%" autoplay="autoplay" playsinline="">
+                <source src="https://wp-iframe.videomill.co/vpaidexamples/videos//vmerce.mp4" />
+                Your browser does not support the HTML5 video tag. Use a better browser!
+            </video>
+            <button id="btn">
+                View Fullscreen!
+            </button>
+        </div>
         <!-- Create the carboard icon button (iow) picture in picture element. -->
         <button id="cardboardButton" class="icon-button">
             <img src="./cbd-vr.svg" alt="Cardboard VR" width="20" height="20">
         </button>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/plyr/3.5.6/plyr.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="process.js"></script>
     <script>
+        $(function() {
 
-        var winwidth=window.innerWidth
-        var winheight=window.innerHeight;
+            function makeLandscape() {
+                // this works on android, not iOS
+                if (screen.orientation && screen.orientation.lock) {
+                    screen.orientation.lock('landscape');
+                }
+            }
 
-        const player = Plyr.setup('#localVideo');
-        player.forEach (item => {
+            $(document).on('click', '#btn', function() {
+                var element = document.getElementById('video-container');
+                if (element.mozRequestFullScreen) {
+                    element.mozRequestFullScreen();
+                    makeLandscape();
+                } else if (element.webkitRequestFullScreen) {
+                    element.webkitRequestFullScreen();
+                    makeLandscape();
+                }
 
-            item.on('enterfullscreen', event => {
+            });
 
-                $(".plyr__video-wrapper").css({"transform": "rotate(90deg)", "height": winwidth, "width": winheight, "margin-left": "0px", "margin-right": "0px"});
-            })
-            item.on('exitfullscreen', event => {
-                $(".plyr__video-wrapper").css({"transform": "rotate(0deg)", "height": "100%", "width": "100%", "margin-left": "auto", "margin-right": "auto"});
-            })
         });
     </script>
 </body>
