@@ -71,18 +71,19 @@
         <!-- Camera Feed (Regular Video Element) -->
 <!--        <video id="localVideo" width="320" height="240" playsinline autoplay muted></video>-->
         <div id="video-container">
-            <video class="video_player" id="player" width="100%" autoplay="autoplay" playsinline="">
-                <source src="https://wp-iframe.videomill.co/vpaidexamples/videos//vmerce.mp4" />
+            <video class="video_player" id="localVideo" width="100%" autoplay="autoplay" playsinline="">
+<!--                <source src="https://wp-iframe.videomill.co/vpaidexamples/videos//vmerce.mp4" />-->
                 Your browser does not support the HTML5 video tag. Use a better browser!
             </video>
-            <button id="btn">
-                View Fullscreen!
-            </button>
+
         </div>
         <!-- Create the carboard icon button (iow) picture in picture element. -->
         <button id="cardboardButton" class="icon-button">
             <img src="./cbd-vr.svg" alt="Cardboard VR" width="20" height="20">
         </button>
+        <a id="btn">
+            View Fullscreen! Now
+        </a>
     </div>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="process.js"></script>
